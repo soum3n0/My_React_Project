@@ -61,6 +61,7 @@ body {
     background: #ffffffff;
     object-fit: contain;
     padding: 6px;
+    padding: 6px;
     border-radius: 15px;
     border: 1px solid #faad96;
     display: flex;
@@ -81,9 +82,15 @@ body {
     background-color: rgb(158, 149, 149);
 }
 
+.shimmer-img{
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: rgb(158, 149, 149);
+}
+
 .res-about {
     width: 100%;
-
     padding: 5px;
 }
 
@@ -95,6 +102,7 @@ body {
 
 .truncate {
     width: 90%;
+    width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -102,6 +110,7 @@ body {
 
 .res-details{
     justify-content: space-around;
+    margin-right: 15px;
     margin-right: 15px;
 }
 
@@ -128,7 +137,28 @@ body {
 }
 
 #shimmer-card {
+#shimmer-card {
     background-color: #c6ada4;
+    border: none;
+}
+
+.shimmer{
+    background-color: rgb(158, 149, 149);
+    height: 20px;
+    max-width: 90%;
+    min-width: 40%;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+.shimmer-center{
+    margin: auto;
+    width: 70%;
+}
+
+.shimmer-margin{
+    margin-top: 20px;
+}
     border: none;
 }
 
