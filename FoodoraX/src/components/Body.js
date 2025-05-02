@@ -17,13 +17,12 @@ const Body = () => {
         );
         const json = await data.json();
 
-        console.log(json);
-        let data1=json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
+        let data1 =
+            json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
         setListOfRestaurants(data1);
     };
 
     if (listOfRestaurants.length === 0) {
-        console.log("loading");
         return <Shimmer />;
     }
 
@@ -44,8 +43,8 @@ const Body = () => {
                 </button>
             </div>
             <div className="res-container">
-                {listOfRestaurants.map((restaurants) => (
-                    <ResturentCard resData={restaurants} />
+                {listOfRestaurants.map((restaurants, index) => (
+                    <ResturentCard resData={restaurants} key={index} />
                 ))}
             </div>
         </div>
