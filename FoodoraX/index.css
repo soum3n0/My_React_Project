@@ -7,13 +7,10 @@ body {
 }
 .header {
     width: 100%;
-    /* box-shadow: 0 15px 40px -20px rgb(40 44 63 / 15%); */
     position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
-    /* right:0; */
-    /* height: 20px; */
     padding: 0px 40px;
     display: flex;
     justify-content: space-between;
@@ -49,17 +46,6 @@ body {
     border: 1px black solid;
 }
 
-/* .header ul .nav-items :hover::after{
-    content: '';
-    width: 50%;
-    height: 3px;
-    background-color: #ff511c;
-    display: flex;
-    position: relative;
-    margin-left:10px;
-
-} */
-
 .chart-logo {
     width: 40px;
     height: 10%;
@@ -72,15 +58,12 @@ body {
 .res-card {
     width: 200px;
     height: 350px;
-    /* height: 20%; */
     background: #ffffffff;
-    /* position: relative; */
     object-fit: contain;
-    padding: 5px;
+    padding: 6px;
     border-radius: 15px;
     border: 1px solid #faad96;
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
 }
 
@@ -91,10 +74,15 @@ body {
     object-fit: cover;
 }
 
+.shimmer-img{
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: rgb(158, 149, 149);
+}
+
 .res-about {
-    width: 90%;
-    height: 60%;
-    /* position:relative;  */
+    width: 100%;
     padding: 5px;
 }
 
@@ -105,7 +93,7 @@ body {
 }
 
 .truncate {
-    width: 90%; /* or any fixed width */
+    width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -113,6 +101,7 @@ body {
 
 .res-details{
     justify-content: space-around;
+    margin-right: 15px;
 }
 
 .flex{
@@ -137,14 +126,25 @@ body {
     justify-content: space-between;
 }
 
-.shimmer-container {
-    display: flex;
-    flex-wrap: wrap;
+#shimmer-card {
+    background-color: #c6ada4;
+    border: none;
 }
 
-.shimmer-card {
-    width: 200px;
-    height: 200px;
-    height: 400px;
-    background-color: #c6ada4;
+.shimmer{
+    background-color: rgb(158, 149, 149);
+    height: 20px;
+    max-width: 90%;
+    min-width: 40%;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+.shimmer-center{
+    margin: auto;
+    width: 70%;
+}
+
+.shimmer-margin{
+    margin-top: 20px;
 }
