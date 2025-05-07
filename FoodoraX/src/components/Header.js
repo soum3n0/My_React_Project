@@ -2,65 +2,58 @@ import { LOGO_URL } from "../Utils/contants";
 import { useState } from "react";
 import Body from "./Body";
 
-const Header = () => {
-  //for my login logout section
-  const [isLogin, setIsLogin] = useState(false);
-  const changeState = () => {
-    setIsLogin(!isLogin);
-  };
+const Header = ({ setSearchText }) => {
+    //for my login logout section
+    const [isLogin, setIsLogin] = useState(false);
+    const changeState = () => {
+        setIsLogin(!isLogin);
+    };
 
-  //for my search section
-  const [searchText, setSearchText] = useState("");
+    //for my search section
+    const [searchValue, setSearchValue] = useState("");
 
-  return (
-    <div className="header">
-      {/* logo */}
+    return (
+        <div className="header">
+            {/* logo */}
 
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
-      </div>
+            <div className="logo-container">
+                <img className="logo" src={LOGO_URL} />
+            </div>
 
-      {/* search  */}
-      <div className="search-section flex flex-btn">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="search-box"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            console.log(searchText);
-          }}
-          className="btn"
-        >
-          search
-        </button>
-      </div>
+            {/* search  */}
+            <div className="search-section flex flex-btn">
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    className="search-box"
+                    value={searchValue}
+                    onChange={(e) => {
+                        setSearchValue(e.target.value);
+                    }}
+                />
+                <button onClick={()=> setSearchText(searchValue)} className="btn">search</button>
+            </div>
 
-      <ul className="nav-items">
-        <li>Home</li>
-        <li>About us</li>
-        <li>contact us</li>
+            <ul className="nav-items">
+                <li>Home</li>
+                <li>About us</li>
+                <li>contact us</li>
 
-        <li className="logo-sec">
-          <img
-            className="chart-logo"
-            src="https://i.pinimg.com/originals/53/a0/fd/53a0fdd351674e0794ada73267f0fa33.png"
-          ></img>
-        </li>
-        <li>
-          <button onClick={changeState}>
-            {" "}
-            {isLogin ? "Login" : "Logout"}{" "}
-          </button>
-        </li>
-      </ul>
-    </div>
-  );
+                <li className="logo-sec">
+                    <img
+                        className="chart-logo"
+                        src="https://i.pinimg.com/originals/53/a0/fd/53a0fdd351674e0794ada73267f0fa33.png"
+                    ></img>
+                </li>
+                <li>
+                    <button onClick={changeState}>
+                        {" "}
+                        {isLogin ? "Login" : "Logout"}{" "}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    );
 };
 
 export default Header;

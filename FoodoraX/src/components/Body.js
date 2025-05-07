@@ -2,7 +2,7 @@ import ResturentCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
-const Body = () => {
+const Body = ({ searchText }) => {
     // hookes : Local State variables - normal js variable
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
@@ -10,13 +10,23 @@ const Body = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    
+
+    useEffect(() => {
+        const filteredRestaurant = listOfRestaurants.filter((value) =>
+            value.info.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        if(filteredRestaurant.length === 0){
+            alert("No search results found");
+            return;
+        }
+        setListOfRestaurants(filteredRestaurant);
+    }, [searchText]);
+
     const fetchData = async () => {
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5743545&lng=88.3628734&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const json = await data.json();
-        console.log(json);
         let data1 =
             json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
         setListOfRestaurants(data1);
@@ -25,7 +35,7 @@ const Body = () => {
     if (listOfRestaurants.length === 0) {
         return <Shimmer />;
     }
-    
+
     return (
         <div className="body">
             <div className="filter">
