@@ -2,7 +2,7 @@ import ResturentCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
-const Body = () => {
+const Body = ({searchText}) => {
     // hookes : Local State variables - normal js variable
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
@@ -10,6 +10,23 @@ const Body = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() =>{
+        const filterRestaurants =  listOfRestaurants.filter(
+            (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        
+        if(filterRestaurants.length === 0 && searchText !== ''){
+            alert("Item is not found!");
+            return ;
+        }
+
+        setListOfRestaurants(filterRestaurants);
+
+    },[searchText])
+
+   
+    
     
     const fetchData = async () => {
         const data = await fetch(
