@@ -1,28 +1,66 @@
 import { LOGO_URL } from "../Utils/contants";
+import { useState } from "react";
+import Body from "./Body";
 
 const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src={LOGO_URL} />
-            </div>
+  //for my login logout section
+  const [isLogin, setIsLogin] = useState(false);
+  const changeState = () => {
+    setIsLogin(!isLogin);
+  };
 
-            {/* <div > */}
-            <ul className="nav-items">
-                <li>Home</li>
-                <li>About us</li>
-                <li>contact us</li>
+  //for my search section
+  const [searchText, setSearchText] = useState("");
 
-                <li className="logo-sec">
-                    <img
-                        className="chart-logo"
-                        src="https://i.pinimg.com/originals/53/a0/fd/53a0fdd351674e0794ada73267f0fa33.png"
-                    ></img>
-                </li>
-            </ul>
-            {/* </div> */}
-        </div>
-    );
+  return (
+    <div className="header">
+      {/* logo */}
+
+      <div className="logo-container">
+        <img className="logo" src={LOGO_URL} />
+      </div>
+
+      {/* search  */}
+      <div className="search-section flex flex-btn">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="search-box"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            console.log(searchText);
+          }}
+          className="btn"
+        >
+          search
+        </button>
+      </div>
+
+      <ul className="nav-items">
+        <li>Home</li>
+        <li>About us</li>
+        <li>contact us</li>
+
+        <li className="logo-sec">
+          <img
+            className="chart-logo"
+            src="https://i.pinimg.com/originals/53/a0/fd/53a0fdd351674e0794ada73267f0fa33.png"
+          ></img>
+        </li>
+        <li>
+          <button onClick={changeState}>
+            {" "}
+            {isLogin ? "Login" : "Logout"}{" "}
+          </button>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 export default Header;
