@@ -1,5 +1,6 @@
 import { LOGO_URL } from "../Utils/contants";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Header = ({setSearchText}) => {
@@ -42,9 +43,9 @@ const Header = ({setSearchText}) => {
       </div>
 
       <ul className="nav-items">
-        <li>Home</li>
-        <li>About us</li>
-        <li>contact us</li>
+      <Link to={"/"} className="link-style"><li>Home</li></Link>
+      <Link to={"/About"} className="link-style"><li>About us</li></Link>
+      <Link to={"/Contact"} className="link-style"><li>contact us</li></Link>
 
         <li className="logo-sec">
           <img
