@@ -1,6 +1,5 @@
 import { LOGO_URL } from "../Utils/contants";
 import { useState } from "react";
-import Body from "./Body";
 
 const Header = ({ setSearchText }) => {
     //for my login logout section
@@ -10,7 +9,7 @@ const Header = ({ setSearchText }) => {
     };
 
     //for my search section
-    const [searchValue, setSearchValue] = useState("");
+    const [searchName, setSearchName] = useState("");
 
     return (
         <div className="header">
@@ -26,12 +25,19 @@ const Header = ({ setSearchText }) => {
                     type="text"
                     placeholder="Search..."
                     className="search-box"
-                    value={searchValue}
+                    value={searchName}
                     onChange={(e) => {
-                        setSearchValue(e.target.value);
+                        setSearchName(e.target.value);
                     }}
                 />
-                <button onClick={()=> setSearchText(searchValue)} className="btn">search</button>
+                <button
+                    onClick={() => {
+                        setSearchText(searchName);
+                    }}
+                    className="btn"
+                >
+                    search
+                </button>
             </div>
 
             <ul className="nav-items">

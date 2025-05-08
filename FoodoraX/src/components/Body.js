@@ -12,14 +12,16 @@ const Body = ({ searchText }) => {
     }, []);
 
     useEffect(() => {
-        const filteredRestaurant = listOfRestaurants.filter((value) =>
-            value.info.name.toLowerCase().includes(searchText.toLowerCase())
+        const filterRestaurants = listOfRestaurants.filter((res) =>
+            res.info.name.toLowerCase().includes(searchText.toLowerCase())
         );
-        if(filteredRestaurant.length === 0){
-            alert("No search results found");
+
+        if (filterRestaurants.length === 0 && searchText !== "") {
+            alert("Item is not found!");
             return;
         }
-        setListOfRestaurants(filteredRestaurant);
+
+        setListOfRestaurants(filterRestaurants);
     }, [searchText]);
 
     const fetchData = async () => {
