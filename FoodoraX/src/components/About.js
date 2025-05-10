@@ -1,8 +1,11 @@
+import User from "./User.js";
+import UserClass from "./UserClass.js";
+
 const About = () => {
   return (
-    <div>
+    <div className ="about-style">
       <h1>About us</h1>
-      <h2>
+      <h4>
         we're passionate about making ordering food easy and enjoyable. We
         believe that everyone deserves access to delicious food, no matter where
         they are. Our mission is to provide a seamless and reliable platform for
@@ -12,7 +15,9 @@ const About = () => {
         user-friendly interface, a wide variety of restaurants, and real-time
         order tracking. We value your satisfaction and are committed to
         continuous improvement.
-      </h2>
+      </h4>
+      <User />
+      <UserClass Name={"Soumen Dey"} Location="Amral" />
     </div>
   );
 };
