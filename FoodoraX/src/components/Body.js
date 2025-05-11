@@ -3,18 +3,14 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
+import useFetchRastaurants from "../Utils/useFetchRastaurants";
 
 const Body = () => {
 
   // hookes : Local State variables - normal js variable
-
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const { searchText } = useOutletContext();
+  const listOfRestaurants = useFetchRastaurants();
   
-  // API call
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { searchText } = useOutletContext();
 
   useEffect(() => {
     const filterRestaurants = listOfRestaurants.filter((res) =>
@@ -29,18 +25,8 @@ const Body = () => {
     setListOfRestaurants(filterRestaurants);
   }, [searchText]);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5743545&lng=88.3628734&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
-    let data1 =
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
-    setListOfRestaurants(data1);
-  };
 
-  if (listOfRestaurants.length === 0) {
+  if (!listOfRestaurants|| listOfRestaurants.length === 0) {
     return <Shimmer />;
   }
 
@@ -61,7 +47,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((restaurants, index) => (
+        {listOfRestaurants.map((restaurants) => (
           <Link 
            key={restaurants.info.id}
           to = {"/restaurant/" +restaurants.info.id} className="link-style"><ResturentCard resData={restaurants} /></Link>
@@ -72,4 +58,4 @@ const Body = () => {
 };
 
 export default Body;
-// export {listOfRestaurants,setListOfRestaurants};
+
