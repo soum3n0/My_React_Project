@@ -8,7 +8,8 @@ import useFetchRastaurants from "../Utils/useFetchRastaurants";
 const Body = () => {
 
   // hookes : Local State variables - normal js variable
-  const listOfRestaurants = useFetchRastaurants();
+  const [listOfRestaurants,setListOfRestaurants ] = useState([]);
+  const listOfRestaurantsname = useFetchRastaurants();
   
   const { searchText } = useOutletContext();
 
